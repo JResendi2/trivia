@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiTrivia;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ApiTrivia::class, 'jugar'])->name('jugar');
+Route::get('/temas', [ApiTrivia::class, 'getTemas'])->name('temas');
+Route::get('/preguntas/{tema}', [ApiTrivia::class, 'getPreguntas'])->name('preguntas');
